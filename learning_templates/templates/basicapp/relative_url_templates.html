@@ -1,0 +1,125 @@
+<!--this file is going to store all the information about -->
+<!--relative url templates-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<H1>WELCOME TO RELATIVE URL TEMPLATES</H1>-->
+
+
+<!--<a href="{% url 'basicapp:other' %}">THE OTHER PAGE</a>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tic_Tac_Toe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<!--    <link rel="stylesheet" href="tic_tac_toe.css">-->
+    <style>
+        .jumbotron{
+            padding: 2rem 1rem;
+            margin-bottom: 2rem;
+            background-color: #e9ecef;
+            border-radius: .3rem;
+        }
+        td{
+            align-self: center;
+            border:3px solid black;
+            height: 190px;
+            width: 200px;
+            text-align: center;
+            font-size: 120px;
+        }
+        body{
+            background-color: lightblue;
+            /*background-image: url("images.png");*/
+        }
+        table{
+            background-color: darkkhaki;
+        }
+        .jumbotron{
+                border:3px solid darkblue;
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="container" >
+    <div class="jumbotron">
+  <h1 class="display-4">Welcome to Tic Tac Toe!</h1> <br>
+        <h4>Get ready to play !</h4><br>
+    <button id="reset" class="btn btn-primary btn-lg" type="button" >Restart!</button>
+
+</div><br>
+    <table align="center">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<br>
+
+<!--# template tagging-->
+<a href="{% url 'basicapp:other' %}"><h1 align="center">THE OTHER PAGE</h1></a>
+<!--adding link to admin page -->
+<a href="{% url 'admin:index' %}"><h1 align="center">GO TO ADMIN</h1></a>
+<!--just another method to call a function-->
+<a href="{% url 'index' %}"><h1 align="center">LINK TO INDEX</h1></a>
+
+</body>
+
+
+<script>
+    // restart button functionality
+
+var restart_but = document.querySelector("#reset");
+
+var squares = document.querySelectorAll("td");
+
+function clear() {
+    console.log("in function");
+    for (var i = 0; i < squares.length; i++) {
+        squares[i].textContent = "";
+    }
+}
+restart_but.addEventListener("click",clear)
+
+// square markers
+
+function changeMarker() {
+    if(this.textContent===""){
+        this.textContent = "X";
+    } else if (this.textContent==="X"){
+        this.textContent = "O";
+    }else {
+        this.textContent = "";
+    }
+}
+
+for (var i=0;i<squares.length;i++){
+    squares[i].addEventListener('click',changeMarker)
+}
+</script>
+</html>
